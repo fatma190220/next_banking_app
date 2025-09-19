@@ -28,14 +28,7 @@
   --color-pink-700: #C11574;
   --color-pink-900: #851651;
 
-  /* --color-blue-25: #F5FAFF;
-  --color-blue-100: #D1E9FF;
-  --color-blue-500: #2E90FA;
-  --color-blue-600: #1570EF;
-  --color-blue-700: #175CD3;
-  --color-blue-900: #194185;
 
-  --color-sky-1: #F3F9FF; */
 
 
   --color-brown-25: #FAF6F3;   /* أفتح درجة - شبه off-white مع لمسة بني */
@@ -58,8 +51,6 @@
   --color-gray-700: #344054;
   --color-gray-900: #101828;
 
-  /* 🖼 Background images */
-  /* --background-image-bank-gradient: linear-gradient(90deg, #0179FE 0%, #4893FF 100%); */
   --background-image-bank-gradient: linear-gradient(90deg, #A47148 0%, #8B5E3C 100%);
 
   --background-image-gradient-mesh: url('/icons/gradient-mesh.svg');
