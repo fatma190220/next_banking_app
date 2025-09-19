@@ -1,26 +1,234 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  /* 🎨 Colors */
+  --color-fill-1: rgba(255, 255, 255, 0.10);
+  /* --color-bankGradient: #0179FE;
+  --color-indigo-500: #6172F3;
+  --color-indigo-700: #3538CD; */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-bankGradient: #A47148;  /* بني مائل للذهبي (Gradient Base) */
+--color-brown-500: #8B5E3C;     /* بني متوسط */
+--color-brown-700: #5C4033;
+
+  --color-success-25: #F6FEF9;
+  --color-success-50: #ECFDF3;
+  --color-success-100: #D1FADF;
+  --color-success-600: #039855;
+  --color-success-700: #027A48;
+  --color-success-900: #054F31;
+
+  --color-pink-25: #FEF6FB;
+  --color-pink-100: #FCE7F6;
+  --color-pink-500: #EE46BC;
+  --color-pink-600: #DD2590;
+  --color-pink-700: #C11574;
+  --color-pink-900: #851651;
+
+  /* --color-blue-25: #F5FAFF;
+  --color-blue-100: #D1E9FF;
+  --color-blue-500: #2E90FA;
+  --color-blue-600: #1570EF;
+  --color-blue-700: #175CD3;
+  --color-blue-900: #194185;
+
+  --color-sky-1: #F3F9FF; */
+
+
+  --color-brown-25: #FAF6F3;   /* أفتح درجة - شبه off-white مع لمسة بني */
+--color-brown-100: #EADDD3;  /* بني فاتح جدًا */
+--color-brown-500: #A47148;  /* بني متوسط دافئ */
+--color-brown-600: #8B5E3C;  /* بني أغمق شوية */
+--color-brown-700: #6B4226;  /* بني غامق */
+--color-brown-900: #3E2723;  /* أغمق درجة - بني تشوكلت */
+
+--color-sand-1: #F9F5F0; 
+
+  --color-black-1: #00214F;
+  --color-black-2: #344054;
+
+  --color-gray-25: #FCFCFD;
+  --color-gray-200: #EAECF0;
+  --color-gray-300: #D0D5DD;
+  --color-gray-500: #667085;
+  --color-gray-600: #475467;
+  --color-gray-700: #344054;
+  --color-gray-900: #101828;
+
+  /* 🖼 Background images */
+  /* --background-image-bank-gradient: linear-gradient(90deg, #0179FE 0%, #4893FF 100%); */
+  --background-image-bank-gradient: linear-gradient(90deg, #A47148 0%, #8B5E3C 100%);
+
+  --background-image-gradient-mesh: url('/icons/gradient-mesh.svg');
+  --background-image-bank-green-gradient: linear-gradient(90deg, #01797A 0%, #489399 100%);
+
+  /* 🌑 Shadows */
+  --shadow-form: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  --shadow-chart: 0px 1px 3px 0px rgba(16, 24, 40, 0.10), 
+                  0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+  --shadow-profile: 0px 12px 16px -4px rgba(16, 24, 40, 0.08),
+                    0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --shadow-creditCard: 8px 10px 16px 0px rgba(0, 0, 0, 0.05);
+
+  /* 🔤 Fonts */
+  --font-inter: var(--font-inter);
+  --font-ibm-plex-serif: var(--font-ibm-plex-serif);
+
+  /* 🎬 Animations */
+  @keyframes accordion-down {
+    from { height: 0 }
+    to { height: var(--radix-accordion-content-height) }
   }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height) }
+    to { height: 0 }
+  }
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+
+
+
+@layer utilities  {
+
+  
+
+
+
+
+.header-2 {
+    @apply text-[18px] font-semibold text-gray-900;
+  }
+
+  .total-balance {
+    @apply flex w-full items-center gap-4 rounded-xl border border-gray-200 p-4 shadow-chart sm:gap-6 sm:p-6;
+  }
+
+  .total-balance-chart {
+    @apply flex size-full max-w-[100px] items-center sm:max-w-[120px];
+  }
+
+  .total-balance-label{
+    @apply text-[14px]  leading-[20px] font-medium text-gray-600;
+  }
+
+  
+  .total-balance-amount {
+   @apply text-[24px] leading-[30px] lg:text-[30px] lg:leading-[38px] flex-1 font-bold text-gray-900;
+
+  }
+
+    .sidebar {
+    @apply sticky left-0 top-0 flex h-screen w-fit flex-col  justify-between border-r border-gray-200 bg-white pt-8 text-white max-md:hidden sm:p-4 xl:p-6 2xl:w-[355px];
+  }
+
+   .sidebar-logo {
+    @apply 2xl:text-[26px] font-ibm-plex-serif text-[26px] font-bold text-black-1 max-xl:hidden;
 }
+
+ .sidebar-link {
+    @apply flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start;
+  }
+
+  .sidebar-label {
+    @apply text-[16px] font-semibold text-black-2 max-xl:hidden;
+  }
+
+
+    .root-layout {
+    @apply flex h-16 items-center justify-between p-5 shadow-creditCard sm:p-8 md:hidden;
+  }
+
+   .mobilenav-sheet {
+    @apply flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto w-full p-6;
+  }
+
+  .mobilenav-link {
+    @apply flex gap-3 items-center p-4 rounded-lg w-full max-w-60;
+  }
+
+ .right-sidebar{
+    @apply hidden h-screen w-[355px] flex-col border-l border-gray-200 bg-white pt-8 xl:flex 2xl:w-[400px];
+ }
+
+ .auth-form {
+    @apply flex min-h-screen w-full max-w-[420px] flex-col justify-center gap-5 py-10 md:gap-8;
+  }
+  
+ .footer {
+    @apply flex cursor-pointer items-center justify-between gap-2 py-6;
+  }
+
+  .footer_name {
+    @apply flex size-10 items-center justify-center rounded-full bg-gray-200 max-xl:hidden;
+  }
+
+  .footer_email {
+    @apply flex flex-1 flex-col justify-center max-xl:hidden;
+  }
+
+  .footer_name-mobile {
+    @apply flex size-10 items-center justify-center rounded-full bg-gray-200;
+  }
+
+  .footer_email-mobile {
+    @apply flex flex-1 flex-col justify-center;
+  }
+
+  .footer_image {
+    @apply relative size-5 max-xl:w-full max-xl:flex max-xl:justify-center max-xl:items-center;
+  }
+
+
+
+
+    /* Bank Card */
+  .bank-card {
+    @apply relative flex h-[190px] w-full max-w-[320px] justify-between rounded-[20px] border border-white bg-bank-gradient shadow-creditCard backdrop-blur-[6px] mt-20;
+  }
+
+  .bank-card_content {
+    @apply relative z-10 flex size-full max-w-[228px] flex-col justify-between rounded-l-[20px] bg-gray-700 bg-bank-gradient px-5 pb-4 pt-5;
+  }
+
+  .bank-card_icon {
+    @apply flex size-full flex-1 flex-col items-end justify-between rounded-r-[20px] bg-bank-gradient bg-cover bg-center bg-no-repeat py-5 pr-5;
+  }
+
+
+
+   .transactions {
+    @apply flex max-h-screen w-full flex-col gap-8 overflow-y-scroll bg-gray-25 p-8 xl:py-12;
+  }
+
+  .transactions-header {
+    @apply flex w-full flex-col items-start justify-between gap-8 md:flex-row;
+  }
+
+  .transactions-account {
+    @apply flex flex-col justify-between gap-4 rounded-lg border-y bg-brown-600 px-4 py-5 md:flex-row;
+  }
+
+  .transactions-account-balance {
+    @apply flex items-center justify-center flex-col  gap-2 rounded-md bg-brown-25/20 px-4 py-2 text-white;
+  }
+
+
+/*payment*/
+  .payment-transfer {
+    @apply flex flex-col overflow-y-scroll bg-gray-25 p-8 md:max-h-screen xl:py-12;
+  }
+   
+
+
+
+
+}
+
